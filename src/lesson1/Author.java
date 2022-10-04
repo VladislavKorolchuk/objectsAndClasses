@@ -1,21 +1,50 @@
 package lesson1;
 
-public class Author {
-    private String nameAuthors; // Имя автора
-    private String SurnameAuthors; // Фамилия автора
+import java.util.Objects;
 
-    public Author(String nameAuthors, String SurnameAuthors) {
+public class Author {
+    protected  String nameAuthors; // Имя автора
+    protected  String surnameAuthors; // Фамилия автора
+
+    public Author(String nameAuthors, String surnameAuthors) {
         this.nameAuthors = nameAuthors;
-        this.SurnameAuthors = SurnameAuthors;
+        this.surnameAuthors = surnameAuthors;
     }
 
     public String getNameAuthors() {
-        return this.nameAuthors;
+        return nameAuthors;
     }
 
     public String getSurnameAuthors() {
-        return this.SurnameAuthors;
+        return surnameAuthors;
     }
+
+   // @Override
+    //public String toString() {
+     //   return "Author{" +
+      //          "nameAuthors='" + nameAuthors + '\'' +
+       //         ", surnameAuthors='" + surnameAuthors + '\'' +
+        //        '}';
+   // }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return nameAuthors.equals(author.nameAuthors) && surnameAuthors.equals(author.surnameAuthors);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameAuthors, surnameAuthors);
+    }
+
+
+    //public String toString() {
+    //   return "Произведение: " + this.bookName + "\n" + getBookAuthor() +
+    //   "Год публикации книги: " + yearPublication + "\n+++++++++++++++++++++++++++++++++++";
+    //}
 
 
 }
